@@ -34,3 +34,11 @@ root                    (project root folder)
 ## Authors
 ---
 * # TODO: Add your name and email here
+
+
+Shanny: actor and cast
+
+Kelley: cast
+
+Cristian: director (You can watch the video that the teacher posted and he explains more or less what needs 
+to be changed in the director for the gem catcher game.)
