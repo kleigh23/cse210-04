@@ -8,6 +8,7 @@ class Director:
         _video_service (VideoService): For providing video output.
     """
 
+#this stays the same - cristian
     def __init__(self, keyboard_service, video_service):
         """Constructs a new Director using the specified keyboard and video services.
         
@@ -17,7 +18,9 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
-        
+
+
+#this stays the same - cristian
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
 
@@ -31,6 +34,8 @@ class Director:
             self._do_outputs(cast)
         self._video_service.close_window()
 
+
+#this stays the same - cristian
     def _get_inputs(self, cast):
         """Gets directional input from the keyboard and applies it to the robot.
         
@@ -39,8 +44,11 @@ class Director:
         """
         robot = cast.get_first_actor("robots")
         velocity = self._keyboard_service.get_direction()
-        robot.set_velocity(velocity)        
+        robot.set_velocity(velocity)
 
+
+
+#this changes
     def _do_updates(self, cast):
         """Updates the robot's position and resolves any collisions with artifacts.
         
@@ -48,19 +56,29 @@ class Director:
             cast (Cast): The cast of actors.
         """
         banner = cast.get_first_actor("banners")
+        
+        #the guy youre using, only moves right and left-- the gem catcher - cristian
         robot = cast.get_first_actor("robots")
+
+        #these are meant to be moving too
         artifacts = cast.get_actors("artifacts")
+
+
 
         banner.set_text("")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
-        
+
+
+
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()):
+
                 message = artifact.get_message()
-                banner.set_text(message)    
-        
+                banner.set_text(message)
+                  
+
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         
