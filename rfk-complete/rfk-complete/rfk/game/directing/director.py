@@ -43,9 +43,12 @@ class Director:
             cast (Cast): The cast of actors.
         """
         robot = cast.get_first_actor("robots")
+        artifacts = cast.get_actors("artifacts")
         velocity = self._keyboard_service.get_direction()
+        art_velocity = self._keyboard_service.move_direction()
         robot.set_velocity(velocity)
-
+        for artifact in artifacts: 
+            artifact.set_velocity(art_velocity)
 
 
 #this changes
@@ -73,8 +76,8 @@ class Director:
 
 
         for artifact in artifacts:
+            artifact.move_next(max_x, max_y)
             if robot.get_position().equals(artifact.get_position()):
-
                 message = artifact.get_message()
                 banner.set_text(message)
                   
