@@ -42,7 +42,7 @@ def main():
     
     # create the robot
     x = int(MAX_X / 2)
-    y = int(MAX_Y/2)
+    y = int(MAX_Y - 30)
 
     # y = int(MAX_Y / 2)
     position = Point(x, y)
