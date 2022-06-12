@@ -81,7 +81,7 @@ def main():
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
-        artifact.set_message(message)
+        artifact.set_message(+1)
         cast.add_actor("artifacts", artifact)
         cast.remove_actor(robot, artifact)
 

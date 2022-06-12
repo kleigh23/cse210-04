@@ -68,7 +68,7 @@ class Director:
 
 
 
-        banner.set_text("")
+        # banner.set_text("")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
@@ -79,7 +79,7 @@ class Director:
             artifact.move_next(max_x, max_y)
             if robot.get_position().equals(artifact.get_position()):
                 message = artifact.get_message()
-                banner.set_text(message)
+                banner.set_text(f"Score: {message}")
                   
 
     def _do_outputs(self, cast):

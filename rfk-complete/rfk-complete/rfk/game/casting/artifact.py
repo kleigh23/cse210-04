@@ -12,7 +12,7 @@ class Artifact(Actor):
     """
     def __init__(self):
         super().__init__()
-        self._message = ""
+        self._message = 0
         
     def get_message(self):
         """Gets the artifact's message.
