@@ -1,3 +1,4 @@
+from game.casting.cast import Cast
 class Director:
     """A person who directs the game. 
     
@@ -80,6 +81,8 @@ class Director:
             if robot.get_position().equals(artifact.get_position()):
                 message = artifact.get_message()
                 banner.set_text(f"Score: {message}")
+                # added this!!! it removes the artifacts when we touch them
+                cast.remove_actor("artifacts", artifact) 
                   
 
     def _do_outputs(self, cast):
