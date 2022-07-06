@@ -71,6 +71,7 @@ class Director:
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
 
+        #for loop to display the massege of the score when the robot has the same position as the gem or rock.
         for artifact in artifacts:
             artifact.move_next(max_x, max_y)
             if robot.get_position().equals(artifact.get_position()):
