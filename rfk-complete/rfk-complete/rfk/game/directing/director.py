@@ -19,6 +19,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self.score = 0
 
 
 #this stays the same - cristian
@@ -60,30 +61,33 @@ class Director:
             cast (Cast): The cast of actors.
         """
         banner = cast.get_first_actor("banners")
-        
         #the guy youre using, only moves right and left-- the gem catcher - cristian
         robot = cast.get_first_actor("robots")
-
         #these are meant to be moving too
         artifacts = cast.get_actors("artifacts")
-
-
 
         # banner.set_text("")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
 
-
-
         for artifact in artifacts:
             artifact.move_next(max_x, max_y)
             if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
-                banner.set_text(f"Score: {message}")
-                # added this!!! it removes the artifacts when we touch them
-                cast.remove_actor("artifacts", artifact) 
-                  
+                if artifact.get_text() == "*":
+                    message = artifact.get_message()
+                    self.score += message
+                    banner.set_text(f"Score: {self.score}")
+                    # added this!!! it removes the artifacts when we touch them
+                    cast.remove_actor("artifacts", artifact) 
+                elif artifact.get_text() == "o":
+                    message = artifact.get_message()
+                    self.score -= message
+                    banner.set_text(f"Score: {self.score}")
+                    cast.remove_actor("artifact", artifact)
+                    if self.score < 0:
+                        self.score = 0
+                        banner.set_text(f"Score: {self.score}")
 
     def _do_outputs(self, cast):
         """Draws the actors on the screen.

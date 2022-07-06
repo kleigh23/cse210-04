@@ -30,6 +30,11 @@ class Artifact(Actor):
         """
         self._message = message
 
+    def get_text(self):
+        """
+        Gets artifact's text
+        """
+        return self._text
 
 
 
