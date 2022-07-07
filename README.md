@@ -30,6 +30,6 @@ root                    (project root folder)
 - Shanny López : If the player touches a gem they earn a point. If the player touches a rock they lose a point.
 ---
 ## Required Technologies
----
+
 * Python 3.8.0
 * Raylib Python CFFI 3.7
